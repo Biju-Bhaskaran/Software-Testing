@@ -1,0 +1,35 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://with-bugs.practicesoftwaretesting.com/#/');
+  await page.locator('[data-test="nav-sign-in"]').click();
+  await page.locator('[data-test="email"]').click();
+  await page.locator('[data-test="email"]').fill('customer@practicesoftwaretesting.com');
+  await page.locator('[data-test="password"]').click();
+  await page.locator('[data-test="password"]').fill('welcome01');
+  await page.locator('[data-test="login-submit"]').click();
+  await page.locator('[data-test="nav-home"]').click();
+  await page.locator('[data-test="category-01KQZ758QMHX115AMJ23P77V04"]').check();
+  await page.locator('[data-test="category-01KQZ758QMHX115AMJ23P77V04"]').uncheck();
+  await page.locator('[data-test="category-01KQZ758QMHX115AMJ23P77V05"]').check();
+  await page.getByText('Hand Saw').click();
+  await page.getByText('Wrench').click();
+  await page.getByText('Wrench', { exact: true }).click();
+  await page.getByText('Screwdriver').click();
+  await page.locator('[data-test="category-01KQZ758QMHX115AMJ23P77V07"]').uncheck();
+  await page.locator('#filters').getByText('Pliers').click();
+  await page.locator('#filters').getByText('Pliers').click();
+  await page.getByText('Chisels').click();
+  await page.getByText('Chisels', { exact: true }).click();
+  await page.getByText('Measures').click();
+  await page.getByText('Measures').click();
+  await page.getByText('Grinder').click();
+  await page.getByText('Grinder').click();
+  await page.getByText('Sander').click();
+  await page.locator('div').filter({ hasText: 'Sheet Sander ABCDE$58.48 Belt' }).nth(2).click();
+  await page.locator('div:nth-child(3) > ul > fieldset > div:nth-child(4)').click();
+  await page.getByText('Sander', { exact: true }).click();
+  await page.getByText('Saw', { exact: true }).click();
+  await page.getByText('Saw', { exact: true }).click();
+  await page.getByText('Drill').click();
+});
